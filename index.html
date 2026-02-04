@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>R.A Studio | Rosario Álvarez — Diseñadora Web</title>
+  <meta name="description" content="R.A Studio — Rosario Álvarez | Diseñadora web. Landings y sitios modernos con estilo neon (fuccia + verde manzana) y foco en conversión por WhatsApp." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="R.A Studio | Rosario Álvarez — Diseñadora Web" />
+  <meta property="og:description" content="Landings y sitios web modernos con foco en conversión. Contacto directo por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://iili.io/fLU9uxs.jpg" />
+
+  <meta name="theme-color" content="#07070A" />
+
+  <style>
+    :root{
+      --black:#07070A;
+      --black2:#0B0B12;
+      --white:#F5F7FF;
+      --muted:rgba(245,247,255,.72);
+      --muted2:rgba(245,247,255,.55);
+      --line:rgba(245,247,255,.14);
+
+      /* Colores pedidos */
+      --fuchsia:#FF1FBF;     /* fuccia */
+      --apple:#A8FF2A;       /* verde manzana */
+
+      --radius:22px;
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
+      --shadow2: 0 12px 40px rgba(0,0,0,.45);
+
+      --max: 1180px;
+
+      --overlay-url: url("https://iili.io/fLSU3OP.jpg");
+      --logo-url: url("https://iili.io/fLU9uxs.jpg");
+
+      --wa: "+54 9 11 6267-3358";
+      --wa_link: "https://wa.me/5491162673358";
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--white);
+      background: radial-gradient(1200px 900px at 15% 10%, rgba(255,31,191,.12), transparent 60%),
+                  radial-gradient(1000px 800px at 90% 20%, rgba(168,255,42,.10), transparent 60%),
+                  linear-gradient(160deg, var(--black), var(--black2));
+      overflow-x:hidden;
+    }
+
+    /* Fondo overlay + pulso neon */
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        linear-gradient(180deg, rgba(7,7,10,.78), rgba(7,7,10,.88)),
+        var(--overlay-url);
+      background-size: cover;
+      background-position:center;
+      filter: saturate(1.05) contrast(1.06);
+      transform: translateZ(0);
+    }
+    .pulse{
+      position:fixed;
+      inset:-20%;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.9;
+      background:
+        radial-gradient(600px 420px at 20% 20%, rgba(255,31,191,.30), transparent 60%),
+        radial-gradient(520px 420px at 78% 25%, rgba(168,255,42,.22), transparent 62%),
+        radial-gradient(700px 520px at 55% 85%, rgba(255,31,191,.18), transparent 65%);
+      animation: neonPulse 6.2s ease-in-out infinite;
+      filter: blur(10px);
+    }
+    @keyframes neonPulse{
+      0%   { transform: scale(1) translateY(0); opacity:.78; }
+      50%  { transform: scale(1.06) translateY(-6px); opacity:1; }
+      100% { transform: scale(1) translateY(0); opacity:.78; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .pulse{ animation:none; }
+      .float-wa{ animation:none !important; }
+    }
+
+    /* Layout */
+    .container{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,7,10,.62);
+      border-bottom:1px solid rgba(245,247,255,.10);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background-image: var(--logo-url);
+      background-size: cover;
+      background-position:center;
+      box-shadow: 0 0 0 1px rgba(245,247,255,.10), 0 10px 24px rgba(0,0,0,.35);
+      flex:0 0 auto;
+    }
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brandText b{
+      font-size:14px;
+      letter-spacing:.4px;
+    }
+    .brandText span{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.2px;
+    }
+
+    .navLinks{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navLinks a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition: .15s ease;
+    }
+    .navLinks a:hover{
+      color:var(--white);
+      border-color: rgba(245,247,255,.14);
+      background: rgba(245,247,255,.06);
+    }
+    .navLinks a.active{
+      color:var(--white);
+      border-color: rgba(255,31,191,.35);
+      box-shadow: 0 0 0 3px rgba(255,31,191,.10);
+      background: rgba(255,31,191,.08);
+    }
+
+    .navCTA{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(245,247,255,.14);
+      background: rgba(245,247,255,.06);
+      color:var(--white);
+      border-radius: 999px;
+      padding:11px 14px;
+      font-weight:800;
+      font-size:13px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(245,247,255,.10);
+      border-color: rgba(245,247,255,.22);
+    }
+    .btnPrimary{
+      border-color: rgba(168,255,42,.42);
+      background: linear-gradient(90deg, rgba(255,31,191,.16), rgba(168,255,42,.16));
+      box-shadow: 0 0 0 3px rgba(168,255,42,.08);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, var(--apple), var(--fuchsia));
+      box-shadow: 0 0 22px rgba(168,255,42,.45), 0 0 24px rgba(255,31,191,.35);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 54px 0 22px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(245,247,255,.12);
+      background: rgba(10,10,16,.55);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(500px 220px at 20% 0%, rgba(255,31,191,.18), transparent 60%),
+        radial-gradient(460px 240px at 90% 20%, rgba(168,255,42,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .cardInner{
+      position:relative;
+      padding:24px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(245,247,255,.14);
+      background: rgba(245,247,255,.05);
+      color:var(--muted);
+      font-weight:750;
+      font-size:12px;
+      letter-spacing:.25px;
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height:1.02;
+      letter-spacing:-.6px;
+    }
+    .grad{
+      background: linear-gradient(90deg, var(--fuchsia), var(--apple));
+      -webkit-background-clip: text;
+      background-clip:text;
+      color:transparent;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+
+    .heroActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .chip{
+      font-size:12px;
+      font-weight:750;
+      color:rgba(245,247,255,.82);
+      border:1px solid rgba(245,247,255,.12);
+      background: rgba(245,247,255,.05);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    /* Panel filtro (para leads de mejor calidad) */
+    .filterTitle{
+      margin:0 0 6px;
+      font-size:14px;
+      color:rgba(245,247,255,.9);
+      font-weight:850;
+      letter-spacing:.2px;
+    }
+    .filterSub{
+      margin:0 0 14px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+    .options{
+      display:grid;
+      gap:10px;
+    }
+    .opt{
+      border-radius:18px;
+      border:1px solid rgba(245,247,255,.12);
+      background: rgba(245,247,255,.04);
+      padding:12px 12px;
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      cursor:pointer;
+      transition:.15s ease;
+      user-select:none;
+    }
+    .opt:hover{
+      background: rgba(245,247,255,.07);
+      border-color: rgba(245,247,255,.18);
+      transform: translateY(-1px);
+    }
+    .opt .badge{
+      width:12px; height:12px;
+      border-radius:999px;
+      margin-top:4px;
+      background: rgba(245,247,255,.18);
+      box-shadow: 0 0 0 3px rgba(245,247,255,.05);
+      flex:0 0 auto;
+    }
+    .opt.active{
+      border-color: rgba(168,255,42,.42);
+      box-shadow: 0 0 0 4px rgba(168,255,42,.08);
+      background: linear-gradient(90deg, rgba(255,31,191,.10), rgba(168,255,42,.10));
+    }
+    .opt.active .badge{
+      background: radial-gradient(circle at 30% 30%, var(--apple), var(--fuchsia));
+      box-shadow: 0 0 26px rgba(168,255,42,.38), 0 0 22px rgba(255,31,191,.25);
+    }
+    .opt b{ display:block; font-size:13px; }
+    .opt span{ display:block; font-size:12px; color:var(--muted); margin-top:2px; line-height:1.35; }
+
+    /* Secciones */
+    section{
+      scroll-margin-top: 92px;
+    }
+    .section{
+      padding: 22px 0;
+    }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin: 10px 0 12px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size: clamp(20px, 2.4vw, 30px);
+      letter-spacing:-.2px;
+    }
+    .sectionHead p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width: 52ch;
+      line-height:1.45;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    .feature{
+      padding:18px;
+    }
+    .feature .icon{
+      width:40px; height:40px;
+      border-radius:14px;
+      background: rgba(245,247,255,.06);
+      border:1px solid rgba(245,247,255,.12);
+      display:grid;
+      place-items:center;
+      margin-bottom:12px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+      position:relative;
+    }
+    .feature .icon::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,31,191,.25), rgba(168,255,42,.22));
+      filter: blur(10px);
+      z-index:-1;
+      opacity:.8;
+    }
+    .feature h3{
+      margin:0 0 6px;
+      font-size:15px;
+      letter-spacing:.2px;
+    }
+    .feature p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* Portfolio mock cards */
+    .portfolioGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){
+      .portfolioGrid{ grid-template-columns: 1fr; }
+    }
+    .work{
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .thumb{
+      border-radius:18px;
+      border:1px solid rgba(245,247,255,.12);
+      background:
+        radial-gradient(420px 220px at 20% 20%, rgba(255,31,191,.18), transparent 60%),
+        radial-gradient(420px 240px at 80% 30%, rgba(168,255,42,.12), transparent 60%),
+        linear-gradient(180deg, rgba(245,247,255,.06), rgba(245,247,255,.02));
+      height: 160px;
+      position:relative;
+      overflow:hidden;
+    }
+    .thumb::after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(220px 160px at 35% 35%, rgba(255,31,191,.26), transparent 60%),
+        radial-gradient(220px 160px at 70% 55%, rgba(168,255,42,.20), transparent 62%);
+      animation: floatGlow 7.5s ease-in-out infinite;
+      filter: blur(8px);
+      opacity:.9;
+    }
+    @keyframes floatGlow{
+      0%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(-14px, -10px) scale(1.06); }
+      100%{ transform: translate(0,0) scale(1); }
+    }
+    .work b{ font-size:14px; }
+    .work p{ margin:0; color:var(--muted); font-size:13px; line-height:1.45; }
+    .work .meta{
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .tag{
+      font-size:12px;
+      font-weight:750;
+      color:rgba(245,247,255,.86);
+      border:1px solid rgba(245,247,255,.12);
+      background: rgba(245,247,255,.04);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 980px){
+      .contactGrid{ grid-template-columns: 1fr; }
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top:10px;
+    }
+    label{
+      font-size:12px;
+      font-weight:800;
+      color:rgba(245,247,255,.88);
+      letter-spacing:.25px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(245,247,255,.14);
+      background: rgba(245,247,255,.04);
+      color:var(--white);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input::placeholder, textarea::placeholder{ color: rgba(245,247,255,.45); }
+    .note{
+      margin:10px 0 0;
+      font-size:12px;
+      color:var(--muted2);
+      line-height:1.45;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 16px;
+      padding: 24px 0 80px; /* espacio para botón flotante */
+      border-top: 1px solid rgba(245,247,255,.10);
+      background: rgba(7,7,10,.52);
+      backdrop-filter: blur(14px);
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot a{
+      color:rgba(245,247,255,.85);
+      text-decoration:none;
+      border-bottom:1px solid rgba(245,247,255,.25);
+    }
+    .foot a:hover{ border-bottom-color: rgba(168,255,42,.55); }
+
+    /* WhatsApp flotante */
+    .float-wa{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:80;
+      border-radius:999px;
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--white);
+      font-weight:900;
+      letter-spacing:.2px;
+      border:1px solid rgba(168,255,42,.42);
+      background: linear-gradient(90deg, rgba(255,31,191,.18), rgba(168,255,42,.18));
+      box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 0 34px rgba(168,255,42,.22), 0 0 34px rgba(255,31,191,.18);
+      animation: waPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes waPulse{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-2px); }
+    }
+    .waIcon{
+      width:18px;height:18px;border-radius:6px;
+      background: radial-gradient(circle at 30% 30%, var(--apple), var(--fuchsia));
+      box-shadow: 0 0 22px rgba(168,255,42,.32), 0 0 18px rgba(255,31,191,.24);
+    }
+    .float-wa small{
+      display:block;
+      font-size:11px;
+      font-weight:800;
+      color:rgba(245,247,255,.78);
+      margin-top:2px;
+      letter-spacing:.25px;
+    }
+    .float-wa.footer-near{
+      bottom: 88px; /* sube cuando el footer está cerca */
+    }
+
+    /* Mobile nav */
+    .burger{
+      display:none;
+      border:1px solid rgba(245,247,255,.14);
+      background: rgba(245,247,255,.06);
+      color:var(--white);
+      border-radius:14px;
+      padding:10px 12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    @media (max-width: 860px){
+      .brand{ min-width: unset; }
+      .navLinks{
+        display:none;
+        width:100%;
+        padding:10px 0 0;
+      }
+      .navLinks.open{ display:flex; justify-content:flex-start; }
+      .navCTA{ gap:8px; }
+      .burger{ display:inline-flex; align-items:center; gap:10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="pulse" aria-hidden="true"></div>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand" aria-label="Marca">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandText">
+            <b>R.A Studio</b>
+            <span>Rosario Álvarez | diseñadora web</span>
+          </div>
+        </div>
+
+        <div class="navCTA">
+          <button class="burger" id="burgerBtn" aria-label="Abrir menú">
+            <span class="dot"></span> Menú
+          </button>
+          <a class="btn btnPrimary" id="navWhatsApp" href="https://wa.me/5491162673358" target="_blank" rel="noopener">
+            <span class="dot"></span> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <nav class="navLinks" id="navLinks" aria-label="Navegación">
+        <a href="#inicio" data-link="inicio">Inicio</a>
+        <a href="#servicios" data-link="servicios">Servicios</a>
+        <a href="#portfolio" data-link="portfolio">Portfolio</a>
+        <a href="#proceso" data-link="proceso">Proceso</a>
+        <a href="#contacto" data-link="contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- INICIO -->
+    <section id="inicio" class="hero">
+      <div class="container">
+        <div class="heroGrid">
+          <div class="card">
+            <div class="cardInner">
+              <div class="kicker"><span class="dot"></span> Diseño web con estética neon + foco en conversión</div>
+              <h1>
+                R.A Studio: <span class="grad">webs que se ven premium</span><br/>
+                y traen clientes por WhatsApp
+              </h1>
+              <p class="sub">
+                Soy <b>Rosario Álvarez</b>, diseñadora web. Armo landings y sitios rápidos, claros y responsivos
+                para que tu negocio se vea <b>confiable</b> y convierta mejor.
+              </p>
+
+              <div class="heroActions">
+                <a class="btn btnPrimary" id="ctaWhatsAppTop" href="https://wa.me/5491162673358" target="_blank" rel="noopener">
+                  <span class="waIcon" aria-hidden="true"></span>
+                  Hablar por WhatsApp
+                </a>
+                <a class="btn" href="#portfolio">
+                  Ver portfolio
+                </a>
+              </div>
+
+              <div class="chips" aria-label="Características">
+                <div class="chip">Full responsive</div>
+                <div class="chip">Anclajes + scroll suave</div>
+                <div class="chip">Estilo fuccia + verde manzana</div>
+                <div class="chip">Entrega clara y ordenada</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filtro de lead (pre-venta) -->
+          <div class="card">
+            <div class="cardInner">
+              <p class="filterTitle">Elegí lo que necesitás</p>
+              <p class="filterSub">Esto arma el mensaje de WhatsApp para ir directo a una propuesta (menos vueltas, mejor cierre).</p>
+
+              <div class="options" id="options">
+                <div class="opt active" data-offer="Landing Express" data-goal="generar consultas rápido" data-time="esta semana">
+                  <div class="badge"></div>
+                  <div>
+                    <b>Landing Express</b>
+                    <span>1 página enfocada en WhatsApp + secciones ancladas. Ideal para validar oferta.</span>
+                  </div>
+                </div>
+
+                <div class="opt" data-offer="Web Completa" data-goal="presencia fuerte y catálogo" data-time="10-14 días">
+                  <div class="badge"></div>
+                  <div>
+                    <b>Web Completa</b>
+                    <span>Multi-sección + portfolio + proceso + contacto. Pensada para escalar.</span>
+                  </div>
+                </div>
+
+                <div class="opt" data-offer="Rediseño / Mejora" data-goal="subir conversiones" data-time="según revisión">
+                  <div class="badge"></div>
+                  <div>
+                    <b>Rediseño / Mejora</b>
+                    <span>Optimización de una web existente: estética, velocidad y CTA.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="heroActions" style="margin-top:14px;">
+                <a class="btn btnPrimary" id="ctaWhatsAppOffer" href="https://wa.me/5491162673358" target="_blank" rel="noopener">
+                  <span class="waIcon" aria-hidden="true"></span>
+                  Pedir propuesta
+                </a>
+                <a class="btn" href="#contacto">Dejar detalles</a>
+              </div>
+
+              <p class="note">
+                WhatsApp: <b style="color:rgba(245,247,255,.9)">${"--wa--"}</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2><span class="grad">Servicios</span> que convierten</h2>
+            <p>Diseño con intención: menos ruido, más acción. Todo pensado para llevar al usuario al contacto.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card feature">
+            <div class="icon">⚡</div>
+            <h3>Landing Pages</h3>
+            <p>Una página rápida y potente: secciones ancladas, CTA claros y copy orientado a WhatsApp.</p>
+          </div>
+
+          <div class="card feature">
+            <div class="icon">🧩</div>
+            <h3>Web Profesional</h3>
+            <p>Tu estudio/negocio con estructura completa: servicios, portfolio, proceso, contacto y credibilidad.</p>
+          </div>
+
+          <div class="card feature">
+            <div class="icon">🎯</div>
+            <h3>Optimización</h3>
+            <p>Mejoras sobre lo que ya tenés: velocidad, UX, jerarquía visual y CTA (para subir conversión).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2><span class="grad">Portfolio</span> (ejemplos)</h2>
+            <p>Reemplazá estos bloques por tus trabajos reales (links, capturas o embeds).</p>
+          </div>
+        </div>
+
+        <div class="portfolioGrid">
+          <div class="card work">
+            <div class="thumb" aria-hidden="true">
+              <!-- imagen genérica para Landing -->
+              <img src="https://iili.io/ftc6WZJ.md.jpg" alt="Mockup landing" style="width:100%;height:100%;object-fit:cover;display:block;" aria-hidden="true" />
+            </div>
+            <b>Landing para servicio</b>
+            <p>Hero fuerte + beneficios + prueba social + CTA a WhatsApp.</p>
+            <div class="meta">
+              <span class="tag">Landing</span><span class="tag">Neon</span><span class="tag">Conversion</span>
+            </div>
+          </div>
+
+          <div class="card work">
+            <div class="thumb" aria-hidden="true">
+              <!-- imagen genérica para Web de estudio -->
+              <img src="https://iili.io/ftVzRhx.md.jpg" alt="Mockup web estudio" style="width:100%;height:100%;object-fit:cover;display:block;" aria-hidden="true" />
+            </div>
+            <b>Web de estudio</b>
+            <p>Secciones ancladas, estructura clara y estética premium.</p>
+            <div class="meta">
+              <span class="tag">Web</span><span class="tag">UI/UX</span><span class="tag">Brand</span>
+            </div>
+          </div>
+
+          <div class="card work">
+            <div class="thumb" aria-hidden="true">
+              <!-- imagen genérica para Rediseño/Optimización -->
+              <img src="https://picsum.photos/seed/optimize/800/600" alt="Mockup rediseño" style="width:100%;height:100%;object-fit:cover;display:block;" aria-hidden="true" />
+            </div>
+            <b>Rediseño/Optimización</b>
+            <p>Mejoras en legibilidad, velocidad y CTA para aumentar consultas.</p>
+            <div class="meta">
+              <span class="tag">Audit</span><span class="tag">UX</span><span class="tag">Performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso" class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Mi <span class="grad">proceso</span> (sin vueltas)</h2>
+            <p>Pre-venta + filtro + demo: primero te muestro un ejemplo y recién si te cierra avanzamos.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card feature">
+            <div class="icon">1</div>
+            <h3>Brief rápido</h3>
+            <p>Objetivo, público, oferta y CTA principal. Lo dejamos claro desde el minuto 1.</p>
+          </div>
+          <div class="card feature">
+            <div class="icon">2</div>
+            <h3>Demo/estructura</h3>
+            <p>Te muestro una propuesta visual + estructura (secciones) para validar dirección.</p>
+          </div>
+          <div class="card feature">
+            <div class="icon">3</div>
+            <h3>Entrega & ajustes</h3>
+            <p>Iteramos lo justo: detalles, copy, mobile, performance, publicación y listo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <div>
+            <h2>Contacto <span class="grad">directo</span></h2>
+            <p>Dejame 3 datos y te respondo con una propuesta rápida. También podés ir directo a WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="contactGrid">
+          <div class="card">
+            <div class="cardInner">
+              <p class="filterTitle">Mandame tu idea</p>
+              <p class="filterSub">Esto no envía mails (sin backend). Genera un mensaje listo para WhatsApp.</p>
+
+              <div class="field">
+                <label for="name">Nombre</label>
+                <input id="name" type="text" placeholder="Tu nombre" autocomplete="name" />
+              </div>
+
+              <div class="field">
+                <label for="biz">Negocio / Rubro</label>
+                <input id="biz" type="text" placeholder="Ej: estética, barbería, comidas, servicios..." />
+              </div>
+
+              <div class="field">
+                <label for="need">¿Qué necesitás?</label>
+                <select id="need">
+                  <option value="Landing Express">Landing Express</option>
+                  <option value="Web Completa">Web Completa</option>
+                  <option value="Rediseño / Mejora">Rediseño / Mejora</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="msg">Detalles</label>
+                <textarea id="msg" placeholder="Contame qué vendés, qué objetivo querés (ventas/turnos/consultas) y si ya tenés Instagram o web."></textarea>
+              </div>
+
+              <div class="heroActions">
+                <a class="btn btnPrimary" id="ctaWhatsAppForm" href="https://wa.me/5491162673358" target="_blank" rel="noopener">
+                  <span class="waIcon" aria-hidden="true"></span>
+                  Enviar por WhatsApp
+                </a>
+                <a class="btn" id="copyMsg" href="javascript:void(0)">Copiar mensaje</a>
+              </div>
+
+              <p class="note">
+                WhatsApp: <b style="color:rgba(245,247,255,.9)">+54 9 11 6267-3358</b>
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="cardInner">
+              <p class="filterTitle">Datos del estudio</p>
+              <p class="filterSub">R.A Studio — Rosario Álvarez | diseñadora web</p>
+
+              <div class="grid3" style="grid-template-columns:1fr; gap:10px;">
+                <div class="card feature" style="background: rgba(245,247,255,.04);">
+                  <div class="icon" aria-hidden="true">📍</div>
+                  <h3>Trabajo remoto</h3>
+                  <p>Coordinamos por WhatsApp. Entrego versión mobile/desktop lista para publicar.</p>
+                </div>
+
+                <div class="card feature" style="background: rgba(245,247,255,.04);">
+                  <div class="icon" aria-hidden="true">🕒</div>
+                  <h3>Entrega rápida</h3>
+                  <p>Dependiendo del proyecto: landing express o web completa por etapas.</p>
+                </div>
+
+                <div class="card feature" style="background: rgba(245,247,255,.04);">
+                  <div class="icon" aria-hidden="true">✅</div>
+                  <h3>Enfoque conversión</h3>
+                  <p>Copy + CTA + estructura: objetivo principal = que te escriban.</p>
+                </div>
+              </div>
+
+              <div class="heroActions" style="margin-top:14px;">
+                <a class="btn btnPrimary" id="ctaWhatsAppBottom" href="https://wa.me/5491162673358" target="_blank" rel="noopener">
+                  <span class="waIcon" aria-hidden="true"></span>
+                  WhatsApp ahora
+                </a>
+                <a class="btn" href="#inicio">Volver arriba</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="foot">
+        <div>
+          <b style="color:rgba(245,247,255,.9)">R.A Studio</b><br/>
+          <span>Rosario Álvarez | diseñadora web</span>
+        </div>
+        <div>
+          <span>Contacto: </span>
+          <a href="https://wa.me/5491162673358" target="_blank" rel="noopener">+54 9 11 6267-3358</a>
+        </div>
+        <div>
+          <a href="https://r-a-studio-ubjb.onrender.com/" target="_blank" rel="noopener">Creado y diseñado por R.A Studio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a class="float-wa" id="floatWA" href="https://wa.me/5491162673358" target="_blank" rel="noopener" aria-label="WhatsApp R.A Studio">
+    <span class="waIcon" aria-hidden="true"></span>
+    WhatsApp
+    <small>Respuesta rápida</small>
+  </a>
+
+  <script>
+    // Helpers
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+
+    // Inyectar wa en el texto "note" del panel filtro (sin tocar CSS)
+    document.body.innerHTML = document.body.innerHTML.replace("${\"--wa--\"}", "+54 9 11 6267-3358");
+
+    // Mobile menu
+    const burgerBtn = $("#burgerBtn");
+    const navLinks = $("#navLinks");
+    burgerBtn?.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // Active link + observer por secciones
+    const links = $$("#navLinks a");
+    const sections = ["inicio","servicios","portfolio","proceso","contacto"].map(id => document.getElementById(id)).filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach(a => a.classList.toggle("active", a.dataset.link === id));
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // elegir la sección más visible
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive(visible.target.id);
+    }, { root: null, threshold: [0.22, 0.35, 0.5, 0.65] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // Construir mensaje WhatsApp con "filtro" (pre-venta)
+    const waBase = "https://wa.me/5491162673358?text=";
+    const opts = $$("#options .opt");
+    const ctaOffer = $("#ctaWhatsAppOffer");
+    const ctaTop = $("#ctaWhatsAppTop");
+    const navWA = $("#navWhatsApp");
+    const floatWA = $("#floatWA");
+
+    let selected = {
+      offer: "Landing Express",
+      goal: "generar consultas rápido",
+      time: "esta semana"
+    };
+
+    function buildOfferMessage(extra=""){
+      const msg =
+`Hola Rosario 👋 Soy ${extra || "—"}.
+Quiero una propuesta para: ${selected.offer}.
+Objetivo: ${selected.goal}.
+Plazo ideal: ${selected.time}.
+
+Te paso mi Instagram/web (si tengo) y lo que vendo. ¿Me decís precio y próximos pasos?`;
+      return waBase + encodeURIComponent(msg);
+    }
+
+    function syncWA(){
+      const link = buildOfferMessage("—");
+      if (ctaOffer) ctaOffer.href = link;
+      if (ctaTop) ctaTop.href = buildOfferMessage("—");
+      if (navWA) navWA.href = buildOfferMessage("—");
+      if (floatWA) floatWA.href = buildOfferMessage("—");
+    }
+
+    opts.forEach(o => {
+      o.addEventListener("click", () => {
+        opts.forEach(x => x.classList.remove("active"));
+        o.classList.add("active");
+        selected = {
+          offer: o.dataset.offer || "Landing Express",
+          goal: o.dataset.goal || "generar consultas rápido",
+          time: o.dataset.time || "esta semana"
+        };
+        syncWA();
+      });
+    });
+
+    // Form -> WhatsApp
+    const name = $("#name");
+    const biz = $("#biz");
+    const need = $("#need");
+    const msg = $("#msg");
+    const ctaForm = $("#ctaWhatsAppForm");
+    const copyBtn = $("#copyMsg");
+
+    function buildFormText(){
+      const n = (name?.value || "").trim() || "—";
+      const b = (biz?.value || "").trim() || "—";
+      const k = (need?.value || "—").trim();
+      const d = (msg?.value || "").trim() || "—";
+
+      return `Hola Rosario 👋 Soy ${n}.
+Rubro/negocio: ${b}
+Necesito: ${k}
+
+Detalles:
+${d}
+
+¿Me pasás una propuesta con precio y tiempos?`;
+    }
+
+    function syncFormWA(){
+      if (!ctaForm) return;
+      ctaForm.href = waBase + encodeURIComponent(buildFormText());
+    }
+
+    [name,biz,need,msg].forEach(el => el?.addEventListener("input", syncFormWA));
+    syncFormWA();
+    syncWA();
+
+    copyBtn?.addEventListener("click", async () => {
+      const text = buildFormText();
+      try{
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = "Copiado ✅";
+        setTimeout(() => copyBtn.textContent = "Copiar mensaje", 1400);
+      }catch(e){
+        alert("No se pudo copiar. Copialo manualmente desde el campo.");
+      }
+    });
+
+    // Subir botón flotante cuando el footer entra en vista (para que no tape)
+    const footer = $("#footer");
+    if (footer && floatWA){
+      const footObs = new IntersectionObserver((entries) => {
+        const ent = entries[0];
+        floatWA.classList.toggle("footer-near", ent.isIntersecting);
+      }, { threshold: 0.08 });
+      footObs.observe(footer);
+    }
+
+    // Cerrar menú mobile al tocar link
+    links.forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+  </script>
+</body>
+</html>
